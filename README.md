@@ -11,7 +11,8 @@ keys.  Simply hitting capslock puts you in mirror mode, and the language model
 intelligently guesses what you're trying to type.  Occasional errors can 
 easily be corrected by leaving capslock mode.
 
-So far, it seems to work pretty well, although there are occasionally some
+Try it out [here](https://averyhiebert.github.io/onehanddemo/)! So far, 
+it seems to work pretty well, although there are occasionally some
 words that are unavoidably ambigous (e.g. giant/heavy, guess/grill) and
 I've only tried conventional English text (no programming, dialect etc.).
 
