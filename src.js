@@ -99,15 +99,16 @@ function handle_key(e){
         backspace();
     }else if (key == "Enter"){
         next_letter("\n");
+    }else if (key == "`"){
+        backspace();
     }else if (key == " "){
         if (e.shiftKey){
-            backspace(); // shift-space for backspace
-            // (Tab would be better, but it loses focus on the text area)
-        }else if (e.ctrlKey){
-            next_letter("\n"); // ctrl-space for newline
+            next_letter("\n"); // shift-space for newline
         }else{
             next_letter(" ");
         }
+    }else if (key == "TAB"){
+        next_letter("\t");
     }else{
         next_letter(undo_caps(key));
     }
