@@ -107,8 +107,10 @@ function handle_key(e){
         }else{
             next_letter(" ");
         }
-    }else if (key == "TAB"){
-        next_letter("\t");
+    }else if (key == "Tab"){
+        // Should do nothing (Don't want to disrupt tab navigation behaviour)
+    }else if (["ArrowLeft","ArrowUp","ArrowRight","ArrowDown"].includes(key)){
+        // Should also do nothing
     }else{
         next_letter(undo_caps(key));
     }
