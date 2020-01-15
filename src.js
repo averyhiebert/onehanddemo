@@ -109,16 +109,10 @@ function handle_key(e){
         }
     }else if (key.length > 1){
         // Do nothing (This catches Tab, arrow keys, escape, etc...)
-    /*
-    }else if (key == "Tab"){
-        // Should do nothing (Don't want to disrupt tab navigation behaviour)
-    }else if (["ArrowLeft","ArrowUp","ArrowRight","ArrowDown"].includes(key)){
-        // Should also do nothing*/
     }else{
         // Should be a normal letter.
         next_letter(undo_caps(key));
     }
-    // TODO: Ignore arrow keys
 }
 
 function clear_box(){
