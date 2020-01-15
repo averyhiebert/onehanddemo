@@ -9,22 +9,24 @@
   </head>
 
   <body>
+  <div align="center">
   <h1>One-Handed Typing Demo (WIP)</h1>
-  <textarea rows="8" cols="80" id="main_box" placeholder="Try typing left-handed..." onkeypress="handle_key(event)" oninput="handle_input()" onload="clear_box()" value=""></textarea>
+  <textarea rows="8" cols="80" id="main_box" placeholder="Turn on Caps Lock to try one-handed typing..." onkeypress="handle_key(event)" oninput="handle_input()" onload="clear_box()" value=""></textarea>
   <br /><br />
   <h3>Instructions</h3>
+  <div style="text-align:left;max-width:600px">
   <p>
-  When capslock is off, type normally.
+  When Caps lock is off, type normally.
   </p>
   <p>
-  When capslock is on, type with your left hand as though it was your
+  When Caps Lock is on, type with your left hand as though it was your
   right hand (see <a href="https://blog.xkcd.com/2007/08/14/mirrorboard-a-one-handed-keyboard-layout-for-the-lazy/">Randall Munroe's blog post</a>, my 
   original inspiration, for an explanation of the concept).  
   The webapp will try to guess which keys you intended without
   you needing to specify.
   Use <em>shift+space</em> for a newline, and <em>`</em> (backtick) to backspace.
   <p>
-  <p> When in Capslock mode you can only enter &amp; delete text
+  <p> When in Caps Lock mode you can only enter &amp; delete text
   at the end of the text.  Sorry.
   <p>
   <p>
@@ -36,6 +38,7 @@
   creator of similar product One Hand Keyboard 
   <a href="http://www.onehandkeyboard.org/standard-qwerty-finger-placement/">here</a>).
   </p>
-
+  </div>
+  </div>
   </body>
 </html>
