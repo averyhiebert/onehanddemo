@@ -13,7 +13,7 @@ easily be corrected by leaving capslock mode.
 
 Try it out [here](https://averyhiebert.github.io/onehanddemo/)! So far, 
 it seems to work pretty well, although there are occasionally some
-words that are unavoidably ambigous (e.g. giant/heavy, guess/grill) and
+words that are unavoidably ambigous (e.g. giant/heavy, interest/entirely) and
 I've only tried conventional English text (no programming, dialect etc.).
 
 Note also that the current version is based on my own touch-typing muscle
