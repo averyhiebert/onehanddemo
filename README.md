@@ -34,10 +34,10 @@ Currently, this is just a single page proof-of-concept webapp.
 When I have time, my plan is to:
  1. Convert this from a single webpage into a library that can be used to add
     this functionality to any text input, or multiple inputs on the same page.  
-    This is probably not very useful on its own, but it leads to 2.
+    (Mostly finished...)
  2. Create a browser extension that enables this functionality for all text
     entry on the web.
- 3. (Unlikely) Look into an OS-wide solution.
+ 3. (Unlikely) Maybe look into an OS-wide solution.
 
 ## Similar Products:
 There exists a similar OS-wide product called 

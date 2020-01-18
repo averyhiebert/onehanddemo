@@ -9,7 +9,7 @@ Has lingthing as a dependency (assumes that it is imported as 'lingthing').*/
 
 class OneHandTyping {
     constructor(corpus_counts, mapping, elem, beam_width){
-        this.elem = elem // The element (text input or text area)
+        this.elem = elem; // The element (text input or text area)
         // TODO: Perform sanity checks (e.g. is the element actually a textbox,
         //   and more likely, does it have conflicting handlers already).
         // If no problems, continue.
@@ -27,9 +27,15 @@ class OneHandTyping {
         this.active = false;    // Whether we are in one-hand mode
         this.candidates = [""]; // Current candidate sentences
 
-        // Add handlers to textbox:
-        this.elem.oninput = this.handleInput; 
-        this.elem.onkeypress = this.handleKey;
+        // Add handlers to textbox
+        //  (Sorry for the nasty, but necessary, that=this hack)
+        var that = this;
+        this.elem.oninput = function(){
+            that.handleInput();
+        }
+        this.elem.onkeypress = function(e){
+            that.handleKey(e);
+        }
     }
 
     handleInput(){
@@ -51,7 +57,7 @@ class OneHandTyping {
             this.candidates = [this.elem.value];
             this.active = true;
         }
-        key = e.key
+        var key = e.key;
         if (key == "Backspace"){
             this.backspace();
         }else if (key == "Enter"){
@@ -68,13 +74,14 @@ class OneHandTyping {
             // Do nothing (This catches Tab, arrow keys, escape, etc...)
         }else{
             // Should be a normal letter.
-            this.nextLetter(undo_caps(key));
+            this.nextLetter(this.undoCaps(key));
         }
     }
 
     logProb(sentence){
         // Wrapper for lingthing.log_prob + corpus info
-        return lingthing.log_prob(sentence,this.n,this.d,this.N);
+        return lingthing.log_prob(sentence,this.model,"laplace",
+            this.n,this.d,this.N);
     }
 
     possibilities(prefix,new_char){
@@ -100,7 +107,7 @@ class OneHandTyping {
             .map(c => c[0])
             .slice(0,this.beam_width);
         // Update textbox
-        this.elem.value = candidates[0];    
+        this.elem.value = this.candidates[0];    
     }
 
     backspace(){
@@ -115,10 +122,10 @@ class OneHandTyping {
             this.candidates = [""]; // Make sure list is never empty
         }
         // Update textbox
-        this.elem.value=candidates[0];
+        this.elem.value=this.candidates[0];
     }
 
-    static undoCaps(c){
+    undoCaps(c){
         if (c.toUpperCase() == c.toLowerCase()){
             return c;
         }

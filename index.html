@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="lib/lingthing-browser-0.0.1.js"></script>
     <script src="lib/5grams.js"></script>
-    <script src="src.js"></script>
+    <script src="OneHandTyping.js"></script>
+    <script type="text/javascript">
+        function initialize(){
+            mapping = {
+                "q":"p","w":"o","e":"i","r":"u","t":"y",
+                "a":";","s":"l","d":"k","f":"j","g":"h",
+                "z":".","x":",","c":"m","v":"n",
+                "Q":"P","W":"O","E":"I","R":"U","T":"Y",
+                "A":":","S":"L","D":"K","F":"J","G":"H",
+                "Z":">","X":"<","C":"M","V":"N"
+            }
+            var textbox = document.getElementById("main_box");
+            var typer = new OneHandTyping(counts,mapping,textbox);
+        }
+    </script>
   </head>
 
-  <body>
+  <body onload="initialize()">
   <div align="center">
   <h1>One-Handed Typing Demo (WIP)</h1>
-  <textarea rows="8" cols="80" id="main_box" placeholder="Turn on Caps Lock to try one-handed typing..." onkeypress="handle_key(event)" oninput="handle_input()" value=""></textarea>
+  <textarea rows="8" cols="80" id="main_box" placeholder="Turn on Caps Lock to try one-handed typing..."></textarea>
   <br /><br />
   <h3>Instructions</h3>
   <div style="text-align:left;max-width:600px">
