@@ -115,6 +115,3 @@ function handle_key(e){
     }
 }
 
-function clear_box(){
-    document.getElementById("main_box").value = "";
-}
