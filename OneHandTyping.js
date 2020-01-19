@@ -116,8 +116,7 @@ class OneHandTyping {
         this.candidates = [...new Set(this.candidates)] // Remove duplicates
             .map(c => [c,this.logProb(c)])
             .sort((a,b) => b[1] - a[1])
-            .map(c => c[0])
-            .slice(0,this.beam_width);
+            .map(c => c[0]);
         if(this.candidates.length == 0){
             this.candidates = [""]; // Make sure list is never empty
         }
