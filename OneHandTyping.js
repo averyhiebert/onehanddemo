@@ -1,15 +1,22 @@
 /* A self-contained library for adding left-handed typing to any
-textbox on the page.  This should add only a single class, OneHandTyper, to
+textbox on the page.  This should add only a single class, OneHandTyping, to
 the global namespace. 
 
-A OneHandTyper object should be able to be added to a textbox on the page,
-and should encapsulate
+A OneHandTyping object should be able to be added to a textbox on the page,
+by passing in the element directly, or by specifying an id.
 
 Has lingthing as a dependency (assumes that it is imported as 'lingthing').*/
 
 class OneHandTyping {
     constructor(corpus_counts, mapping, elem, beam_width){
-        this.elem = elem; // The element (text input or text area)
+        if (typeof elem === 'string'){
+            this.elem = document.getElementById(elem);
+            if (!this.elem){
+                throw "Element with id '" + elem + "' not found";
+            }
+        }else{
+            this.elem = elem;
+        }
         // TODO: Perform sanity checks (e.g. is the element actually a textbox,
         //   and more likely, does it have conflicting handlers already).
         // If no problems, continue.
@@ -22,6 +29,7 @@ class OneHandTyping {
         this.N = model_info.N
 
         // Typing algorithm settings/variables:
+        // TODO: Add default mappings + option of custom mapping.
         this.mapping = mapping; // Keyboard mapping
         this.beam_width = beam_width || 30; // Param for beam search
         this.active = false;    // Whether we are in one-hand mode
