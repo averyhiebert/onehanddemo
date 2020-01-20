@@ -20,6 +20,7 @@ class OneHandTyping {
         // TODO: Perform sanity checks (e.g. is the element actually a textbox,
         //   and more likely, does it have conflicting handlers already).
         // If no problems, continue.
+        // If there are handlers, maybe try to keep them?
 
         // Initialize model
         this.model = corpus_counts; // n-gram counts
@@ -29,8 +30,31 @@ class OneHandTyping {
         this.N = model_info.N
 
         // Typing algorithm settings/variables:
-        // TODO: Add default mappings + option of custom mapping.
-        this.mapping = mapping; // Keyboard mapping
+        var default_mappings = {
+            "default":{
+                "q":"p","w":"o","e":"i","r":"u","t":"y",
+                "a":";","s":"l","d":"k","f":"j","g":"h",
+                "z":".","x":",","c":"m","v":"n",
+                "Q":"P","W":"O","E":"I","R":"U","T":"Y",
+                "A":":","S":"L","D":"K","F":"J","G":"H",
+                "Z":">","X":"<","C":"M","V":"N"
+            },
+            "xkcd":{
+                "q":"p","w":"o","e":"i","r":"u","t":"y",
+                "a":"'","s":"l","d":"k","f":"j","g":"h",
+                "z":".","x":",","c":"m","v":"n",
+                "Q":"P","W":"O","E":"I","R":"U","T":"Y",
+                "A":"\"","S":"L","D":"K","F":"J","G":"H",
+                "Z":">","X":"<","C":"M","V":"N"
+            }
+        }
+        if (typeof mapping === 'string'){
+            //TODO: Validity check
+            this.mapping = default_mappings[mapping];
+        }else{
+            //TODO: Validity check
+            this.mapping = mapping; // Keyboard mapping
+        }
         this.beam_width = beam_width || 30; // Param for beam search
         this.active = false;    // Whether we are in one-hand mode
         this.candidates = [""]; // Current candidate sentences
