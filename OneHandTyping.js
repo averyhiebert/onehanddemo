@@ -33,24 +33,53 @@ class OneHandTyping {
         var default_mappings = {
             "default":{
                 "q":"p","w":"o","e":"i","r":"u","t":"y",
+                    "y":"t","u":"r","i":"e","o":"w","p":"q",
                 "a":";","s":"l","d":"k","f":"j","g":"h",
+                    "h":"g","j":"f","k":"d","l":"s",";":"a",
                 "z":".","x":",","c":"m","v":"n",
+                    "n":"v","m":"c",",":"x",".":"z",
                 "Q":"P","W":"O","E":"I","R":"U","T":"Y",
+                    "Y":"T","U":"R","I":"E","O":"W","P":"Q",
                 "A":":","S":"L","D":"K","F":"J","G":"H",
-                "Z":">","X":"<","C":"M","V":"N"
+                    "H":"G","J":"F","K":"D","L":"S",":":"A",
+                "Z":">","X":"<","C":"M","V":"N",
+                    "N":"V","M":"C","<":"X",">":"Z",
+            },
+            "standard":{
+                "q":"p","w":"o","e":"i","r":"u","t":"y",
+                    "y":"t","u":"r","i":"e","o":"w","p":"q",
+                "a":";","s":"l","d":"k","f":"j","g":"h",
+                    "h":"g","j":"f","k":"d","l":"s",";":"a",
+                "z":"/","x":".","c":",","v":"m","b":"n",
+                    "n":"b","m":"v",",":"c",".":"x","/":"z",
+                "Q":"P","W":"O","E":"I","R":"U","T":"Y",
+                    "Y":"T","U":"R","I":"E","O":"W","P":"Q",
+                "A":":","S":"L","D":"K","F":"J","G":"H",
+                    "H":"G","J":"F","K":"D","L":"S",":":"A",
+                "Z":"?","X":">","C":"<","V":"M","B":"N",
+                    "N":"B","M":"V","<":"C",">":"X","?":"Z",
             },
             "xkcd":{
                 "q":"p","w":"o","e":"i","r":"u","t":"y",
+                    "y":"t","u":"r","i":"e","o":"w","p":"q",
                 "a":"'","s":"l","d":"k","f":"j","g":"h",
+                    "h":"g","j":"f","k":"d","l":"s",";":"a",
                 "z":".","x":",","c":"m","v":"n",
+                    "n":"v","m":"c",",":"x",".":"z",
                 "Q":"P","W":"O","E":"I","R":"U","T":"Y",
+                    "Y":"T","U":"R","I":"E","O":"W","P":"Q",
                 "A":"\"","S":"L","D":"K","F":"J","G":"H",
-                "Z":">","X":"<","C":"M","V":"N"
-            }
+                    "H":"G","J":"F","K":"D","L":"S",":":"A",
+                "Z":">","X":"<","C":"M","V":"N",
+                    "N":"V","M":"C","<":"X",">":"Z",
+            },
         }
         if (typeof mapping === 'string'){
-            //TODO: Validity check
-            this.mapping = default_mappings[mapping];
+            if (mapping in default_mappings){
+                this.mapping = default_mappings[mapping];
+            }else{
+                throw "Invalid mapping";
+            }
         }else{
             //TODO: Validity check
             this.mapping = mapping; // Keyboard mapping
@@ -99,6 +128,7 @@ class OneHandTyping {
         }else if (key == " "){
             if (e.shiftKey){
                 this.nextLetter("\n"); // shift-space for newline
+                // Todo: For "text" -type "input"s, hit enter instead.
             }else{
                 this.nextLetter(" ");
             }
